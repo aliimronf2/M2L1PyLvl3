@@ -49,6 +49,14 @@ async def attack(ctx):
     else:
         await ctx.send("Anda harus mention user lain untuk menyerang")
 
+@bot.command()
+async def info(ctx):
+    author = ctx.author.name
+    if author in Pokemon.pokemons:
+        pokemon = Pokemon.pokemons[author]
+        await ctx.send(await pokemon.info())
+    else:
+        await ctx.send("Anda tidak punya pokemon")
 
 # Running the bot
 bot.run(token)
